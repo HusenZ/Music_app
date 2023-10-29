@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:music_player/models/song_model.dart';
 import 'package:music_player/widgets/app_bar.dart';
+import 'package:music_player/widgets/header_text.dart';
+import 'package:music_player/widgets/song_card.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    List<Song> songs = Song.songs;
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
@@ -82,6 +86,23 @@ class HomeScreen extends StatelessWidget {
                           borderSide: BorderSide.none,
                         ),
                       ),
+                    ),
+                    Column(
+                      children: [
+                        const HeaderText(
+                            title: 'Trending Music', action: 'view more'),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.27,
+                          width: MediaQuery.of(context).size.width,
+                          child: ListView.builder(
+                            itemCount: songs.length,
+                            scrollDirection: Axis.horizontal,
+                            itemBuilder: (context, index) {
+                              return SongCard(song: songs[index]);
+                            },
+                          ),
+                        )
+                      ],
                     ),
                   ],
                 ),
