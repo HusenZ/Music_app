@@ -27,7 +27,7 @@ class Song {
       title: 'Pathala Pathala - Vikram',
       description: 'Big fan of Kamal Hasan sir',
       url: 'assets/songs/Pathala Pathala.mp3',
-      coverUrl: 'assets/images/pahtalajpg',
+      coverUrl: 'assets/images/pathala.jpg',
     ),
     Song(
       title: 'Vikram title track',

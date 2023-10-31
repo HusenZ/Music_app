@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:music_player/models/song_model.dart';
 import 'package:music_player/widgets/app_bar.dart';
 import 'package:music_player/widgets/header_text.dart';
+import 'package:music_player/widgets/playlist.dart';
 import 'package:music_player/widgets/song_card.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -50,7 +51,10 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.all(20.0),
+                padding: const EdgeInsets.only(
+                  left: 10,
+                  top: 10,
+                ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -71,26 +75,32 @@ class HomeScreen extends StatelessWidget {
                     const SizedBox(
                       height: 20,
                     ),
-                    TextFormField(
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: Colors.white,
-                        hintText: 'Search your feel song...',
-                        hintStyle:
-                            Theme.of(context).textTheme.bodyMedium!.copyWith(
-                                  color: Colors.grey.shade400,
-                                ),
-                        prefixIcon: const Icon(Icons.search_sharp),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(15),
-                          borderSide: BorderSide.none,
+                    Padding(
+                      padding: const EdgeInsets.only(right: 20.0),
+                      child: TextFormField(
+                        decoration: InputDecoration(
+                          filled: true,
+                          fillColor: Colors.white,
+                          hintText: 'Search your feel song...',
+                          hintStyle:
+                              Theme.of(context).textTheme.bodyMedium!.copyWith(
+                                    color: Colors.grey.shade400,
+                                  ),
+                          prefixIcon: const Icon(Icons.search_sharp),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15),
+                            borderSide: BorderSide.none,
+                          ),
                         ),
                       ),
                     ),
                     Column(
                       children: [
-                        const HeaderText(
-                            title: 'Trending Music', action: 'view more'),
+                        const Padding(
+                          padding: EdgeInsets.only(right: 20.0),
+                          child: HeaderText(
+                              title: 'Trending Music', action: 'view more'),
+                        ),
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.27,
                           width: MediaQuery.of(context).size.width,
@@ -100,6 +110,16 @@ class HomeScreen extends StatelessWidget {
                             itemBuilder: (context, index) {
                               return SongCard(song: songs[index]);
                             },
+                          ),
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.all(10.0),
+                          child: Column(
+                            children: [
+                              HeaderText(
+                                  title: 'Playlists', action: 'view more'),
+                              PlaylistCard(),
+                            ],
                           ),
                         )
                       ],
